@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+export FIREFOX_IMAGE=${FIREFOX_IMAGE:="instrumentisto/geckodriver"}
+export FIREFOX_IMAGE_VERSION=${FIREFOX_IMAGE_VERSION:="latest"}
+export FIREFOX_ROOT=${FIREFOX_ROOT:="/var/lib/dokku/services/firefox"}
+export FIREFOX_HOST_ROOT=${FIREFOX_HOST_ROOT:=$FIREFOX_ROOT}
+
+export PLUGIN_UNIMPLEMENTED_SUBCOMMANDS=("backup" "backup-auth" "backup-deauth" "backup-schedule" "backup-schedule-cat" "backup-set-encryption" "backup-unschedule" "backup-unset-encryption" "clone" "connect" "export" "import")
+export PLUGIN_COMMAND_PREFIX="firefox"
+export PLUGIN_CONFIG_ROOT=${PLUGIN_CONFIG_ROOT:="$DOKKU_LIB_ROOT/config/$PLUGIN_COMMAND_PREFIX"}
+export PLUGIN_DATA_ROOT=$FIREFOX_ROOT
+export PLUGIN_DATA_HOST_ROOT=$FIREFOX_HOST_ROOT
+export PLUGIN_PORTS=(4444)
+export PLUGIN_WAIT_PORT=4444
+export PLUGIN_DEFAULT_ALIAS="FIREFOX"
+export PLUGIN_DISABLE_PULL=${FIREFOX_DISABLE_PULL:=}
+export PLUGIN_DISABLE_PULL_VARIABLE="FIREFOX_DISABLE_PULL"
+export PLUGIN_ALT_ALIAS="DOKKU_FIREFOX"
+export PLUGIN_IMAGE=$FIREFOX_IMAGE
+export PLUGIN_IMAGE_VERSION=$FIREFOX_IMAGE_VERSION
+export PLUGIN_SCHEME="http"
+export PLUGIN_SERVICE="Firefox"
+export PLUGIN_VARIABLE="FIREFOX"
+export PLUGIN_BASE_PATH="$PLUGIN_PATH"
+if [[ -n $DOKKU_API_VERSION ]]; then
+  export PLUGIN_BASE_PATH="$PLUGIN_ENABLED_PATH"
+fi
+
+if [[ -d "$PLUGIN_DATA_ROOT/*" ]]; then
+  rm -rf "${PLUGIN_DATA_ROOT:?}/*"
+fi
