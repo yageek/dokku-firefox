@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 export FIREFOX_IMAGE=${FIREFOX_IMAGE:="instrumentisto/geckodriver"}
-export FIREFOX_IMAGE_VERSION=${FIREFOX_IMAGE_VERSION:="latest"}
+export FIREFOX_IMAGE_VERSION=${FIREFOX_IMAGE_VERSION:="87.0-driver0.29.1-r0-debian-buster"}
 export FIREFOX_ROOT=${FIREFOX_ROOT:="/var/lib/dokku/services/firefox"}
 export FIREFOX_HOST_ROOT=${FIREFOX_HOST_ROOT:=$FIREFOX_ROOT}
 
